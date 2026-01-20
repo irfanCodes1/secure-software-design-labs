@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 07 - Register</title>
+    <!-- CryptoJS for Hashing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <h1>Register (Lab 07 - Hash + Salt)</h1>
+    <form onsubmit="event.preventDefault(); registerUser();">
+        <label>Username:</label>
+        <input type="text" id="regUser"><br><br>
+        
+        <label>Password:</label>
+        <input type="password" id="regPass"><br><br>
+        
+        <button type="submit">Register</button>
+    </form>
+    
+    <h3>Debug Info (For Marks):</h3>
+    <p><b>Salt Generated:</b> <span id="debugSalt"></span></p>
+    <p><b>Plain Hash (Unsafe):</b> <span id="debugPlain"></span></p>
+    <p><b>Salted Hash (Secure):</b> <span id="debugSalted"></span></p>
+
+    <br>
+    <a href="login.html">Go to Login</a>
+    <script src="script.js"></script>
+</body>
+</html>

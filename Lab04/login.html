@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 04 - Login</title>
+</head>
+<body>
+    <h1>Login (Lab 04 - Safe Errors)</h1>
+    <form onsubmit="event.preventDefault(); loginUser();">
+        <label>Username:</label>
+        <input type="text" id="loginUser"><br><br>
+        
+        <label>Password:</label>
+        <!-- Caps Lock Detection on KeyUp -->
+        <input type="password" id="loginPass" onkeyup="checkCaps(event)"><br>
+        <span id="capsWarning" style="color:red; display:none;">WARNING: Caps Lock is ON!</span>
+        <br><br>
+        
+        <button type="submit">Login</button>
+    </form>
+
+    <br>
+    <a href="register.html">Register</a>
+    <script src="script.js"></script>
+</body>
+</html>

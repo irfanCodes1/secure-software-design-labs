@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 05 - Encryption</title>
+    <!-- CryptoJS for AES Encryption -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <h1>Lab 05 - Encryption (Admin Only)</h1>
+    
+    <!-- Login Section -->
+    <div id="loginSection">
+        <h3>Login First (Use 'admin' to see encryption tools)</h3>
+        <input type="text" id="user" placeholder="Username">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Encryption Section (Hidden by default) -->
+    <div id="adminSection" style="display:none; border: 1px solid black; padding: 20px; margin-top: 20px;">
+        <h2>AES Encryption Tool (Admin)</h2>
+        
+        <label>Message:</label>
+        <input type="text" id="msg" placeholder="Secret Message"><br><br>
+
+        <label>Secret Key:</label>
+        <input type="text" id="key" placeholder="Encryption Key"><br><br>
+
+        <button onclick="encryptMsg()">Encrypt</button>
+        <button onclick="decryptMsg()">Decrypt</button>
+
+        <h3>Result:</h3>
+        <p id="output" style="font-family: monospace; background: #eee; padding: 10px;"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

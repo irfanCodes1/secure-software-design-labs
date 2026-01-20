@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Vulnerable Form (No CSRF Token)</h1>
+    <form action="/transfer-vulnerable" method="POST">
+        <label>Amount:</label>
+        <input type="number" name="amount" value="100">
+        <button type="submit">Transfer</button>
+    </form>
+    <p>If an attacker creates a hidden form pointing to /transfer-vulnerable, it works!</p>
+</body>
+</html>

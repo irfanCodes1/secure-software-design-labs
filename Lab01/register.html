@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 01 - Register</title>
+</head>
+<body>
+    <h1>Register (Lab 01)</h1>
+    <form onsubmit="event.preventDefault(); registerUser();">
+        <label>Username:</label>
+        <input type="text" id="regUser" placeholder="Enter username"><br><br>
+        
+        <label>Password:</label>
+        <input type="password" id="regPass" placeholder="Enter password (min 8 chars)"><br><br>
+        
+        <button type="submit">Register</button>
+    </form>
+    <br>
+    <a href="login.html">Go to Login</a>
+
+    <script src="script.js"></script>
+</body>
+</html>

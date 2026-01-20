@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Secure Form (With CSRF Token)</h1>
+    <form action="/transfer-secure" method="POST" id="secureForm">
+        <label>Amount:</label>
+        <input type="number" name="amount" value="100">
+        
+        <!-- HIDDEN TOKEN FIELD -->
+        <input type="hidden" name="csrf_token" id="csrfToken">
+        
+        <button type="submit">Transfer</button>
+    </form>
+
+    <script>
+        // Fetch token from server and inject into form
+        fetch('/token')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('csrfToken').value = data.token;
+                console.log("Token injected:", data.token);
+            });
+    </script>
+</body>
+</html>

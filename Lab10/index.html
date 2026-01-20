@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lab 10 - JWT</title></head>
+<body>
+    <h1>Lab 10 - Secure API + JWT</h1>
+    
+    <button onclick="login()">1. Login (Get Token)</button>
+    <button onclick="getData()">2. Access Protected API</button>
+    <button onclick="logout()">3. Logout</button>
+
+    <h3>Status:</h3>
+    <pre id="output">Not logged in</pre>
+
+    <script>
+        let jwtToken = localStorage.getItem("token");
+
+        async function login() {
+            const res = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: "admin", password: "password" })
+            });
+            const data = await res.json();
+            
+            if (data.token) {
+                jwtToken = data.token;
+                localStorage.setItem("token", jwtToken);
+                document.getElementById("output").innerText = "Logged in! Token: " + jwtToken.substring(0, 20) + "...";
+            } else {
+                document.getElementById("output").innerText = "Login Failed";
+            }
+        }
+
+        async function getData() {
+            if (!jwtToken) { alert("Login first!"); return; }
+
+            const res = await fetch('/api/secret-data', {
+                method: 'GET',
+                headers: { 'Authorization': 'Bearer ' + jwtToken }
+            });
+            
+            if (res.ok) {
+                const data = await res.json();
+                document.getElementById("output").innerText = "API Success: " + JSON.stringify(data);
+            } else {
+                document.getElementById("output").innerText = "API Access Denied!";
+            }
+        }
+
+        function logout() {
+            jwtToken = null;
+            localStorage.removeItem("token");
+            document.getElementById("output").innerText = "Logged out.";
+        }
+    </script>
+</body>
+</html>
